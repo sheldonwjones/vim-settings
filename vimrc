@@ -277,6 +277,9 @@ if !exists("autocommands_loaded")
     autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
     autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
     autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+
+    "Activate Cosetags for html style filetypes
+    au Filetype mako.html,html,xhtml,xml,xsl exec 'source '.g:vim_local.'/scripts/closetag.vim'
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -453,11 +456,11 @@ if v:version >= 703
 endif
 
 "Persistent undo
-try
-  set undodir=~/.vim/undodir
-  set undofile
-catch
-endtry
+"try
+"    set undodir='.vim/undodir'
+"    set undofile
+"catch
+"endtry
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugins
@@ -494,7 +497,6 @@ endtry
     " => closetag
     """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
     let g:closetag_html_style=1
-    au Filetype mako.html,html,xhtml,xml,xsl source ~/.vim/scripts/closetag.vim
 
     """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
     " => taglist
