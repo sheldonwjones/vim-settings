@@ -12,7 +12,7 @@ Clone the repository
 
 ::
 
-    git clone ...into... ${HOME}/.vim
+    git clone https://github.com/sheldonwjones/vim-settings ${HOME}/.vim
     cd ${HOME}/.vim
     git submodule init
     git submodule update
