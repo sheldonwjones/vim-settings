@@ -14,6 +14,8 @@ augroup filetypedetect
     au! BufRead,BufNewFile SConscript setf python
     au! BufRead,BufNewFile *.jt,*.jinja2 setf htmljinja
     au! BufRead,BufNewFile *.as setf actionscript
+    au! BufWinLeave *.py silent mkview
+    au! BufWinEnter *.py silent loadview
 augroup END
 
 let &cpo = s:cpo_save
