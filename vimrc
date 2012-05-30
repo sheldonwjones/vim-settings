@@ -112,8 +112,8 @@ nnoremap <C-h> <C-W>h
 nnoremap <C-l> <C-W>l
 
 "Move between buffers with arrow keys
-nnoremap <right> :bnext<cr>
-nnoremap <left> :bprev<cr>
+"nnoremap <right> :bnext<cr>
+"nnoremap <left> :bprev<cr>
 noremap <space> :bnext<cr>
 noremap <s-space> :bprev<cr>
 
@@ -220,6 +220,15 @@ nnoremap <leader>ex :call RunShebang()<CR>
 
 "Switch CWD based on current file
 nnoremap <leader>cd lcd %:p:h<CR>
+
+"Paste support in osx gvim (NOT macvim)
+"command-v doesn't show up in gvim so I have to use option-v
+if has("unix")
+    if !has("mac")
+        nmap <M-S-v> :call setreg("\"",system("pbpaste"))<CR>o<ESC>p
+        nmap <M-v> :call setreg("\"",system("pbpaste"))<CR>p
+    endif
+endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Autocommands
