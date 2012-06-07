@@ -489,7 +489,8 @@ endif
     let g:pymode_lint_hold = 1
     let g:pymode_lint_ignore = "E501"
     let g:pymode_lint_onfly = 0
-    let g:pymode_lint_checker = "pep8,pyflakes"
+    let g:pymode_lint_checker = "pep8"
+    let g:pymode_lint_cwindow = 0
     let g:pymode_breakpoint_key = '<leader>p'
     let g:pymode_rope_extended_complete = 1
     let g:pymode_options_other = 0
