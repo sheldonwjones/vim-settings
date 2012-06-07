@@ -2,7 +2,7 @@ VIM Settings
 ============
 
 It uses Tim Pope's pathogen_ VIM plugin to keep addons in their own
-private directories.
+private directories. The font used is Inconsolata_.
 
 Installation
 ------------
@@ -30,3 +30,4 @@ on the path by setting ``g:vim_local``::
     let g:vim_local = '~/.vim'
 
 .. _pathogen: https://github.com/tpope/vim-pathogen
+.. _Inconsolata : http://levien.com/type/myfonts/inconsolata.html
