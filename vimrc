@@ -48,6 +48,9 @@ set grepformat=%f:%l:%m
 "Update time for various features
 set updatetime=1000
 
+"Enable viminfo
+set viminfo='20,\"90,h,%
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text Options
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
