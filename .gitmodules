@@ -34,3 +34,6 @@
 [submodule "bundle/sgmlendtag"]
 	path = bundle/sgmlendtag
 	url = https://github.com/ervandew/sgmlendtag.git
+[submodule "bundle/vim-yaml"]
+	path = bundle/vim-yaml
+	url = https://github.com/avakhov/vim-yaml.git
