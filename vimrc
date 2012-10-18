@@ -88,7 +88,10 @@ nnoremap ; :
 
 "Toggle cursorcolmn and cursorlin
 nnoremap <silent> <C-t> :set cursorcolumn! cursorline!<CR>
-"
+
+"Toggle TagBar
+nnoremap <silent> <S-t> :TagbarOpenAutoClose<CR>
+
 "Turn off search highlighting
 nnoremap <leader>h :set hls!<cr>
 
@@ -175,6 +178,7 @@ function! MyMaps()
         nnoremap <leader>v :CtrlP views<cr>
         nnoremap <leader>m :CtrlP models<cr>
         nnoremap <leader>t :CtrlP templates<cr>
+        nnoremap <leader>p :CtrlP panels<cr>
         nnoremap <leader>o :CtrlPMRUFiles<cr>
         nnoremap <leader>b :CtrlPBuffer<cr>
     endif
@@ -489,12 +493,12 @@ endif
     """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
     " => python-mode
     """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+    let g:pymode_breakpoint = 0
     let g:pymode_lint_hold = 1
     let g:pymode_lint_ignore = "E501"
     let g:pymode_lint_onfly = 0
     let g:pymode_lint_checker = "pep8"
     let g:pymode_lint_cwindow = 0
-    let g:pymode_breakpoint_key = '<leader>p'
     let g:pymode_rope_extended_complete = 1
     let g:pymode_options_other = 0
 
