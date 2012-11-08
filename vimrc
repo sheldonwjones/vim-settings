@@ -226,7 +226,9 @@ endfunction
 nnoremap <leader>ex :call RunShebang()<CR>
 
 "Switch CWD based on current file
-nnoremap <leader>cd lcd %:p:h<CR>
+nnoremap <leader>cd cd %:p:h<CR>
+"Switch CWD based on current file only for current buffer
+nnoremap <leader>lcd lcd %:p:h<CR>
 
 "Paste support in osx gvim (NOT macvim)
 "command-v doesn't show up in gvim so I have to use option-v
@@ -295,7 +297,8 @@ if !exists("autocommands_loaded")
     autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 
     "Activate Cosetags for html style filetypes
-    au Filetype mako.html,html,xhtml,xml,xsl exec 'source '.g:vim_local.'/scripts/closetag.vim'
+    autocmd Filetype mako.html,html,xhtml,xml,xsl,javascript exec 'source '.g:vim_local.'/scripts/closetag.vim'
+
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -324,9 +327,9 @@ if has("gui_running")
     "hi Error gui=undercurl guibg=#1e1e1e
     if has("unix")
         if has("mac")
-            set guifont=Inconsolata:h18
+            set guifont=Inconsolata:h15
         else
-            set guifont=Inconsolata\ 11
+            set guifont=Inconsolata\ 13
         endif
     elseif has("dos")
         set guifont=Consolas:h12
@@ -514,27 +517,3 @@ endif
     " => closetag
     """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
     let g:closetag_html_style=1
-
-    """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-    " => taglist
-    """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-    "let g:Tlist_Sort_Type='name'
-    "let g:Tlist_Use_Horiz_Window=0
-    "let g:Tlist_Use_Right_Window=0
-    "let g:Tlist_Use_Left_Window=1
-    "let g:Tlist_Compact_Format=1
-    "let g:Tlist_Exit_OnlyWindow=1
-    "let g:Tlist_Close_On_Select=1
-    "let g:Tlist_GainFocus_On_ToggleOpen=1
-    "let g:Tlist_File_Fold_Auto_Close=1
-    "let g:Tlist_Show_One_File=1
-    "let g:Tlist_WinWidth=40
-    "let g:Tlist_Auto_Highlight_Tag=1
-    "let g:Tlist_Display_Prototype=0
-    "let g:Tlist_Display_Tag_Scope=1
-    "let g:Tlist_Compact_Format=1
-    "let g:Tlist_Enable_Fold_Column=0
-
-    " Shorter commands to toggle Taglist display
-    "nnoremap <silent> <S-t> :TlistToggle<cr>
-
