@@ -182,6 +182,9 @@ function! MyMaps()
         nnoremap <leader>o :CtrlPMRUFiles<cr>
         nnoremap <leader>b :CtrlPBuffer<cr>
     endif
+    if exists("g:loaded_gundo")
+        nnoremap <leader>g :GundoToggle<cr>
+    endif
 endfunction
 
 " From an idea by Michael Naumann
@@ -213,7 +216,7 @@ function! InsertTab()
     endif
 endfunction
 
-inoremap <tab> <c-r>=InsertTab()<cr>
+inoremap <C-tab> <c-r>=InsertTab()<cr>
 
 "Function to execute a file beginning with a shebang
 function! RunShebang()
