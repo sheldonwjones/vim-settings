@@ -43,9 +43,6 @@
 [submodule "bundle/vim-gundo"]
 	path = bundle/vim-gundo
 	url = https://github.com/sjl/gundo.vim.git
-[submodule "bundle/vim-auto_comp_pop"]
-	path = bundle/vim-auto_comp_pop
-	url = https://github.com/vim-scripts/AutoComplPop.git
 [submodule "bundle/vim-ack"]
 	path = bundle/vim-ack
 	url = https://github.com/mileszs/ack.vim.git
@@ -64,3 +61,6 @@
 [submodule "bundle/zope-snipmate-bundle"]
 	path = bundle/zope-snipmate-bundle
 	url = https://github.com/zedr/zope-snipmate-bundle.git
+[submodule "bundle/supertab"]
+	path = bundle/supertab
+	url = https://github.com/ervandew/supertab
