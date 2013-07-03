@@ -130,7 +130,7 @@ nnoremap <C-a> 0
 nnoremap <C-e> $
 
 "Simplify omnicompletion
-inoremap <C-space> <C-x><C-o>
+"inoremap <C-space> <C-x><C-o>
 
 "Enable resaving a file as root with sudo
 cmap w!! w !sudo tee % >/dev/null
@@ -299,6 +299,9 @@ if !exists("autocommands_loaded")
     autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
     autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 
+    "Html files are sometimes Mako files
+    autocmd BufEnter,BufNewFile *.html set ft=mako.xhtml.javascript
+
     "Activate Cosetags for html style filetypes
     autocmd Filetype mako.html,html,xhtml,xml,xsl,javascript exec 'source '.g:vim_local.'/scripts/closetag.vim'
 
@@ -332,7 +335,7 @@ if has("gui_running")
         if has("mac")
             set guifont=Inconsolata:h15
         else
-            set guifont=Inconsolata\ 13
+            set guifont=Inconsolata\ 12
         endif
     elseif has("dos")
         set guifont=Consolas:h12
