@@ -112,10 +112,18 @@ nnoremap ' `
 nnoremap ` '
 
 "Smart way to move between windows
-nnoremap <C-j> <C-W>j
-nnoremap <C-k> <C-W>k
-nnoremap <C-h> <C-W>h
-nnoremap <C-l> <C-W>l
+let g:tmux_navigator_no_mappings = 1
+
+nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
+nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
+nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
+nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
+nnoremap <silent> <C-\> :TmuxNavigatePrevious<cr>
+
+"nnoremap <C-j> <C-W>j
+"nnoremap <C-k> <C-W>k
+"nnoremap <C-h> <C-W>h
+"nnoremap <C-l> <C-W>l
 
 "Move between buffers with arrow keys
 "nnoremap <right> :bnext<cr>
@@ -145,7 +153,7 @@ noremap L g$
 nnoremap <leader>ev :exec ':e! '.g:vim_local.'/vimrc'<cr>
 
 "Display the end of lines and tabs as special characters
-set listchars=tab:>-,trail:+
+set listchars=tab:>-,trail:·
 set list
 nnoremap <silent> <leader>s :set nolist!<cr>
 
@@ -179,6 +187,7 @@ function! MyMaps()
         nnoremap <leader>m :CtrlP models<cr>
         nnoremap <leader>t :CtrlP templates<cr>
         nnoremap <leader>p :CtrlP panels<cr>
+        nnoremap <leader>j :CtrlP ng/js<cr>
         nnoremap <leader>o :CtrlPMRUFiles<cr>
         nnoremap <leader>b :CtrlPBuffer<cr>
     endif
@@ -293,7 +302,7 @@ if !exists("autocommands_loaded")
     autocmd BufLeave *.c,*.cpp,*.h,*.hpp,*.cxx,*.hxx,*.m,*.mm,*.java set cindent&
 
     "Enable omni completion
-    autocmd FileType * set omnifunc=syntaxcomplete#Complete
+    "autocmd FileType * set omnifunc=syntaxcomplete#Complete
     autocmd FileType python set omnifunc=pythoncomplete#Complete
     autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
     autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
@@ -322,18 +331,18 @@ let g:tex_flavor = "latex"
 "Turn on syntax highlighting
 syntax on
 
-"Set background to dark
-set background=dark
+"Set background to light
+set background=light
 
 if has("gui_running")
-    let g:zenburn_high_Contrast=1
-    let g:zenburn_unified_CursorColumn = 1
+    ""let g:zenburn_high_Contrast=1
+    ""let g:zenburn_unified_CursorColumn = 1
     "hi CursorLine gui=None
     "hi CursorColumn gui=None
     "hi Error gui=undercurl guibg=#1e1e1e
     if has("unix")
         if has("mac")
-            set guifont=Inconsolata:h15
+            set guifont=Source\ Code\ Pro\ for\ Powerline:h14
         else
             set guifont=Inconsolata\ 12
         endif
@@ -343,7 +352,10 @@ if has("gui_running")
 else
     set t_Co=256
 endif
-colorscheme zenburn
+
+" color scheme
+colorscheme lucius
+LuciusWhite
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => User Interface
@@ -370,6 +382,7 @@ set wildignore+=*.o,*.obj,*.so,*.a,*.dll,*.dylib
 set wildignore+=.DS_*,*.db,*.bak,.cache,*.lock
 set wildignore+=*.svn,*.git,*.swp,*.pyc,*.class,*/__pycache__/*
 set wildignore+=*.egg-info*,jquery*,taghl*,*.taghl,.ropeproject,tags
+set wildignore+=node_modules,.gitkeep
 
 "Always show current position
 set ruler
@@ -433,7 +446,7 @@ set guioptions=a
 
 "Show the statusline
 set laststatus=2
-set statusline=%<%f\ %h%m%r%{fugitive#statusline()}\ %{HasVirtEnv()}\ %{HasPaste()}%=%-14.(%l,%c%V%)\ %P\ F:%{foldlevel('.')}
+"set statusline=%<%f\ %h%m%r%{fugitive#statusline()}\ %{HasVirtEnv()}\ %{HasPaste()}%=%-14.(%l,%c%V%)\ %P\ F:%{foldlevel('.')}
 
 "show paste status on statusline
 function! HasPaste()
@@ -474,7 +487,7 @@ match ExtraWhitespace /\s\+$/
 if v:version >= 703
     "Highlight the column to avoid long lines
     set colorcolumn=81
-    highlight ColorColumn ctermbg=8 guibg=#222222
+    "highlight ColorColumn ctermbg=2 guibg=#222222
 
     "Show the relative number instead of absolute line number
     "set relativenumber
@@ -490,6 +503,11 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugins
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+    """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+    " => airline
+    """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+    "let g:airline_theme='light'
+    let g:airline_powerline_fonts = 1
 
     """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
     " => Ctrl-P
@@ -524,9 +542,23 @@ endif
     """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
     let g:closetag_html_style=1
 
-
     """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
     " => SuperTab
     """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
     let g:SuperTabLongestEnhanced = 0
     let g:SuperTabLongestHighlight = 1
+
+    """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+    " => javascript-libraries-syntax.vim
+    """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+    let g:used_javascript_libs = 'underscore,jquery,angularjs'
+
+    """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+    " => SyntaxComplete
+    """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+    if has("autocmd") && exists("+omnifunc")
+    autocmd Filetype *
+            \    if &omnifunc == "" |
+            \        setlocal omnifunc=syntaxcomplete#Complete |
+            \    endif
+    endif
