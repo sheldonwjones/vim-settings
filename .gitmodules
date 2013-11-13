@@ -52,9 +52,6 @@
 [submodule "bundle/vim-addon-mw-utils"]
 	path = bundle/vim-addon-mw-utils
 	url = https://github.com/MarcWeber/vim-addon-mw-utils.git
-[submodule "bundle/snipmate-snippets"]
-	path = bundle/snipmate-snippets
-	url = https://github.com/honza/snipmate-snippets.git
 [submodule "bundle/zope-snipmate-bundle"]
 	path = bundle/zope-snipmate-bundle
 	url = https://github.com/zedr/zope-snipmate-bundle.git
@@ -76,3 +73,6 @@
 [submodule "bundle/javascript-libraries-syntax"]
 	path = bundle/javascript-libraries-syntax
 	url = https://github.com/othree/javascript-libraries-syntax.vim
+[submodule "bundle/vim-snippets"]
+	path = bundle/vim-snippets
+	url = https://github.com/honza/vim-snippets.git
