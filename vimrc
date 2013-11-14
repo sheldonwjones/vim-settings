@@ -507,6 +507,7 @@ endif
     " => airline
     """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
     "let g:airline_theme='light'
+    let g:airline#extensions#tabline#fnamemod = ':~:.'
     let g:airline_powerline_fonts = 1
 
     """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
