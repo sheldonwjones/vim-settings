@@ -331,8 +331,8 @@ let g:tex_flavor = "latex"
 "Turn on syntax highlighting
 syntax on
 
-"Set background to light
-set background=light
+"Set background to dark
+set background=dark
 
 if has("gui_running")
     ""let g:zenburn_high_Contrast=1
