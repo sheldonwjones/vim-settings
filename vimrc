@@ -128,6 +128,8 @@ nnoremap <silent> <C-\> :TmuxNavigatePrevious<cr>
 "Move between buffers with arrow keys
 "nnoremap <right> :bnext<cr>
 "nnoremap <left> :bprev<cr>
+noremap <tab> :bnext<cr>
+noremap <s-tab> :bprev<cr>
 noremap <space> :bnext<cr>
 noremap <s-space> :bprev<cr>
 
@@ -187,7 +189,7 @@ function! MyMaps()
         nnoremap <leader>m :CtrlP models<cr>
         nnoremap <leader>t :CtrlP templates<cr>
         nnoremap <leader>p :CtrlP panels<cr>
-        nnoremap <leader>j :CtrlP ng/js<cr>
+        nnoremap <leader>j :CtrlP js/app<cr>
         nnoremap <leader>o :CtrlPMRUFiles<cr>
         nnoremap <leader>b :CtrlPBuffer<cr>
     endif
@@ -304,12 +306,16 @@ if !exists("autocommands_loaded")
     "Enable omni completion
     "autocmd FileType * set omnifunc=syntaxcomplete#Complete
     autocmd FileType python set omnifunc=pythoncomplete#Complete
+    autocmd FileType python set omnifunc=pythoncomplete#Complete
+    autocmd FileType python IndentGuidesEnable
+    autocmd FileType javascript set tabstop=2
+    autocmd FileType javascript set shiftwidth=2
     autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
     autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
     autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 
     "Html files are sometimes Mako files
-    autocmd BufEnter,BufNewFile *.html set ft=mako.xhtml.javascript
+    autocmd BufEnter,BufNewFile *.html set ft=mako.javascript.xhtml
 
     "Activate Cosetags for html style filetypes
     autocmd Filetype mako.html,html,xhtml,xml,xsl,javascript exec 'source '.g:vim_local.'/scripts/closetag.vim'
@@ -351,6 +357,9 @@ if has("gui_running")
     endif
 else
     set t_Co=256
+    let g:indent_guides_auto_colors = 0
+    au VimEnter,Colorscheme * :hi IndentGuidesOdd ctermbg=0
+    au VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=23
 endif
 
 " color scheme
@@ -503,6 +512,11 @@ endif
 " => Plugins
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
     """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+    " => easytag
+    """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+    let g:easytags_updatetime_warn = 0
+
+    """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
     " => airline
     """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
     "let g:airline_theme='light'
@@ -533,9 +547,10 @@ endif
     " => vim-indent-guides
     """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-    let g:indent_guides_enable_on_vim_startup = 1
+    let g:indent_guides_enable_on_vim_startup = 0
     let g:indent_guides_start_level = 2
     let g:indent_guides_guide_size = 1
+    let g:indent_guides_color_change_percent = 10
 
     """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
     " => closetag
